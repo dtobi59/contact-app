@@ -1,3 +1,5 @@
+import React from "react";
+import {Link} from "react-router-dom";
 
 const Header = () => {
   return (
@@ -6,23 +8,18 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-8">
             <div className="flex items-center justify-between h-16">
                 <div className=" flex items-center">
-                    <a className="flex-shrink-0" href="/">
+                    <Link to="/" className="flex-shrink-0">
                         <img className="h-8 w-24" src="https://deepay.com.ng/_nuxt/img/logo.d37b049.png" alt="Workflow"/>
-                    </a>
+                    </Link>
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            <a className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Home
-                            </a>
-                            <a className="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Gallery
-                            </a>
-                            <a className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Content
-                            </a>
-                            <a className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Contact
-                            </a>
+                            <Link to="/" className="text-gray-400  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                                Contact List
+                            </Link>
+                            <Link to="/add" className="text-gray-400 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                                Add Contact
+                            </Link>
+                       
                         </div>
                     </div>
                 </div>
