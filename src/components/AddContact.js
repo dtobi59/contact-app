@@ -1,11 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom"
 
-class AddContact extends React.Component{
-    add = (e) =>{
+const AddContact = (props) => {
+    
+    // state = {
+    //     name:"",
+    //     email:""
+    // }
+    const navigate = useNavigate();
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("");
+
+    const add = (e) => {
         e.preventDefault();
-        console.log("Adding new Contact");
+       
+        
+        // console.log("Adding new Contact");
+        props.newContactHandler({name,email});
+        setEmail("");
+        setName("");
+        console.log(props);
+        navigate("/");
+        
     }
-    render(){
+    
         return(
             
 <div className="container mx-auto px-4 sm:px-8 max-w-3xl">
@@ -13,7 +32,7 @@ class AddContact extends React.Component{
         Add New Contact
     </div>
     <div className="mt-2">
-        <form onSubmit={this.add} autoComplete="off">
+        <form onSubmit={add} autoComplete="off">
             <div className="flex flex-col mb-2">
 
                 <div className="flex relative ">
@@ -22,7 +41,11 @@ class AddContact extends React.Component{
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                       </svg>
                     </span>
-                    <input type="text" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Name"/>
+                    <input 
+                     value = {name}
+                     onChange={(e) => {setName(e.target.value)}} 
+                     type="text" required
+                     className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Name"/>
                     </div>
                 </div>
 
@@ -35,7 +58,10 @@ class AddContact extends React.Component{
                             </path>
                         </svg>
                     </span>
-                    <input type="text" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
+                    <input
+                     value={email}
+                     onChange={(e) => {setEmail(e.target.value)}}
+                     type="text" required className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
                     </div>
                 </div>
               
@@ -51,6 +77,6 @@ class AddContact extends React.Component{
 
         );
     }
-}
+
 
 export default AddContact;
